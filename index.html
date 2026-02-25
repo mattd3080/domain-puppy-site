@@ -453,7 +453,7 @@
       <img id="puppy" src="puppy.png" alt="Domain Puppy" draggable="false">
     </div>
     <div class="address-bar">
-      <div class="bar-text">curl -sL domainpuppy.com/install | sh</div>
+      <div class="bar-text">npx skills add mattd3080/domain-puppy</div>
       <button type="button" class="copy-btn" id="copyBtn" onclick="copyCommand()">Copy</button>
     </div>
   </div>
@@ -520,7 +520,7 @@ function puppyWag() {
 setInterval(puppyWag, 10000);
 
 function copyCommand() {
-  navigator.clipboard.writeText('curl -sL domainpuppy.com/install | sh').then(() => {
+  navigator.clipboard.writeText('npx skills add mattd3080/domain-puppy').then(() => {
     const btn = document.getElementById('copyBtn');
     btn.textContent = 'Copied!';
     btn.classList.add('copied');
