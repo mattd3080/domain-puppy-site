@@ -74,4 +74,4 @@ fi
 echo ""
 echo "Done! Installed to $INSTALLED location(s)."
 echo ""
-echo "Start a new conversation and say: find me a domain for [your idea]"
+echo "Try it now: find me a domain for [your idea]"
