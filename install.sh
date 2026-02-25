@@ -3,27 +3,27 @@
 # Works in any terminal, Claude Code, Codex, Cursor, Gemini CLI, etc.
 #
 # Usage:
-#   curl -sL domainpuppy.com/install | sh
-#   curl -sL domainpuppy.com/install | sh -s -- --global
+#   curl -sL domainpuppy.com/install | sh              (global — default)
+#   curl -sL domainpuppy.com/install | sh -s -- -p     (project only)
 set -e
 
 REPO="https://raw.githubusercontent.com/mattd3080/domain-puppy/main/SKILL.md"
 NAME="domain-puppy"
 
-# Parse flags
-GLOBAL=false
+# Parse flags — global is default
+PROJECT=false
 for arg in "$@"; do
   case "$arg" in
-    -g | --global) GLOBAL=true ;;
+    -p | --project) PROJECT=true ;;
   esac
 done
 
-if [ "$GLOBAL" = true ]; then
-  BASE="$HOME"
-  echo "Installing Domain Puppy globally (~/)..."
-else
+if [ "$PROJECT" = true ]; then
   BASE="."
   echo "Installing Domain Puppy to current project..."
+else
+  BASE="$HOME"
+  echo "Installing Domain Puppy globally (~/)..."
 fi
 
 # Download
