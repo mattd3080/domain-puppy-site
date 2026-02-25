@@ -3,7 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Domain Puppy</title>
+<title>Bulk Search and Find Domains with AI and Claude Code | Domain Puppy</title>
+<meta name="description" content="Bulk search and brainstorm the perfect domain with AI. Domain Puppy is a skill for Claude Code, Codex, and other agentic coding tools. Install from your terminal.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Domain Puppy">
+<meta property="og:description" content="Bulk search and brainstorm the perfect domain with AI. All from your terminal | Domain Puppy.">
+<meta property="og:image" content="https://domainpuppy.com/puppy.png">
+<meta property="og:url" content="https://domainpuppy.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Domain Puppy">
+<meta name="twitter:description" content="Bulk search and brainstorm the perfect domain with AI. All from your terminal | Domain Puppy.">
+<meta name="twitter:image" content="https://domainpuppy.com/puppy.png">
+<link rel="canonical" href="https://domainpuppy.com/">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="256x256" href="favicon-256.png">
@@ -18,9 +29,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 18vh;
     background: #9dd5ea;
-    overflow: hidden;
+    overflow-x: hidden;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -45,6 +57,7 @@
   .title {
     text-align: center;
     margin-bottom: 56px;
+    width: 100%;
   }
 
   .title h1 {
@@ -62,7 +75,9 @@
     margin-top: 16px;
     letter-spacing: -0.01em;
     line-height: 1.5;
-    max-width: 420px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .title .instruction {
@@ -71,6 +86,9 @@
     color: #2a5a72;
     margin-top: 20px;
     letter-spacing: -0.01em;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .title .instruction strong {
@@ -81,6 +99,23 @@
   .bar-section {
     position: relative;
     width: min(80vw, 480px);
+    margin-bottom: 60px;
+  }
+
+  .tulips-wrap {
+    position: absolute;
+    left: 12px;
+    bottom: 100%;
+    margin-bottom: -38px;
+    z-index: 10;
+  }
+
+  .tulips-wrap img {
+    width: clamp(56px, 10vw, 80px);
+    height: auto;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    display: block;
   }
 
   .puppy-wrap {
@@ -127,7 +162,7 @@
     flex: 1;
     padding: 0 20px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(11px, 1.4vw, 14px);
+    font-size: clamp(10px, 2.8vw, 14px);
     font-weight: 500;
     color: #0c2b3d;
     white-space: nowrap;
@@ -164,9 +199,80 @@
     background: #22c55e;
   }
 
+  .copy-btn:focus-visible {
+    outline: 2px solid #0c2b3d;
+    outline-offset: 2px;
+  }
+
+  .footer a:focus-visible {
+    outline: 2px solid #0c2b3d;
+    outline-offset: 2px;
+  }
+
+  .faq {
+    width: min(80vw, 560px);
+    margin-bottom: 80px;
+  }
+
+  .faq h2 {
+    font-size: clamp(14px, 1.6vw, 16px);
+    font-weight: 500;
+    color: #2a5a72;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .faq details {
+    border-top: 1px solid rgba(12, 43, 61, 0.12);
+  }
+
+  .faq details:last-of-type {
+    border-bottom: 1px solid rgba(12, 43, 61, 0.12);
+  }
+
+  .faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    font-size: clamp(14px, 1.6vw, 17px);
+    font-weight: 500;
+    color: #0c2b3d;
+    cursor: pointer;
+    list-style: none;
+    letter-spacing: -0.01em;
+  }
+
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq summary::after {
+    content: '+';
+    font-size: 20px;
+    font-weight: 400;
+    color: #2a5a72;
+    flex-shrink: 0;
+    margin-left: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .faq details[open] summary::after {
+    content: '\2212';
+  }
+
+  .faq .faq-answer {
+    padding: 0 0 20px;
+    font-size: clamp(13px, 1.4vw, 15px);
+    font-weight: 400;
+    color: #2a5a72;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+  }
+
   .footer {
-    position: fixed;
-    bottom: 16px;
+    padding-bottom: 24px;
     z-index: 1;
     font-size: 10px;
     color: #2a5a72;
@@ -190,7 +296,7 @@
     height: auto;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
     user-select: none;
     animation: sun-bob 20s ease-in-out infinite;
@@ -208,7 +314,7 @@
     height: auto;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
     user-select: none;
     animation: cloud-drift 122s linear infinite, cloud-bob 6s ease-in-out infinite;
@@ -267,8 +373,8 @@
     }
 
     .bar-text {
-      padding: 0 12px;
-      font-size: 11px;
+      padding: 0 10px;
+      font-size: 10px;
     }
 
     .copy-btn {
@@ -276,6 +382,14 @@
       font-size: 11px;
       height: 32px;
       margin-right: 7px;
+    }
+
+    .tulips-wrap {
+      left: 4px;
+    }
+
+    .tulips-wrap img {
+      width: 64px;
     }
 
     .puppy-wrap {
@@ -302,8 +416,18 @@
       width: 110px;
     }
 
-    .footer {
-      bottom: 12px;
+    .faq {
+      width: 100%;
+      margin-bottom: 60px;
+    }
+
+    .faq summary {
+      font-size: 14px;
+      padding: 16px 0;
+    }
+
+    .faq .faq-answer {
+      font-size: 13px;
     }
   }
 
@@ -317,23 +441,46 @@
 <div class="content">
   <div class="title">
     <h1>Domain Puppy</h1>
-    <div class="tagline">Bulk search and brainstorm the perfect domain with AI.<br><span style="display:inline-block;margin-top:8px">All from your terminal.</span></div>
-    <div class="instruction">Run the command below in <strong>Claude Code</strong>, <strong>Codex</strong>, or your agentic coding tool of choice.</div>
+    <p class="tagline">Bulk search and brainstorm the perfect domain with AI.<br><span style="display:inline-block;margin-top:8px">All from your terminal.</span></p>
+    <p class="instruction">Run the command below in <strong>Claude Code</strong>, <strong>Codex</strong>, or your agentic coding tool of choice.</p>
   </div>
 
   <div class="bar-section">
+    <div class="tulips-wrap">
+      <img src="tulips.png" alt="Tulips" draggable="false">
+    </div>
     <div class="puppy-wrap">
       <img id="puppy" src="puppy.png" alt="Domain Puppy" draggable="false">
     </div>
     <div class="address-bar">
-      <div class="bar-text">bunx skills add mattd3080/domain-shark</div>
-      <button class="copy-btn" id="copyBtn" onclick="copyCommand()">Copy</button>
+      <div class="bar-text">curl -sL domainpuppy.com/install | sh</div>
+      <button type="button" class="copy-btn" id="copyBtn" onclick="copyCommand()">Copy</button>
     </div>
   </div>
-</div>
 
-<div class="footer">
-  &copy; 2026 Retrogram Music LLC &middot; <a href="terms.html">Terms</a>
+  <div class="faq">
+    <h2>FAQ</h2>
+    <details>
+      <summary>Why did you make Domain Puppy?</summary>
+      <div class="faq-answer">When I'm vibe coding, I absolutely hate leaving the terminal to deal with a GUI. I've found that many domain searches are slow. And the bulk search features are disappointing, after experiencing the magic of AI. Domain Puppy solves that by letting you stay in terminal for all of your domain brainstorming and research. We use a series of APIs to see if your ideas are available. And then when you're ready to acquire your domain, we'll open up a browser tab for you.</div>
+    </details>
+    <details>
+      <summary>How can I collaborate with you?</summary>
+      <div class="faq-answer">ruffruff [at] domainpuppy.com</div>
+    </details>
+    <details>
+      <summary>Is it free to use?</summary>
+      <div class="faq-answer">Yep! And we may earn a small commission when you buy the domain, depending on where you purchase it.</div>
+    </details>
+    <details>
+      <summary>Did you use Domain Puppy to secure your nice domain name?</summary>
+      <div class="faq-answer">Absolutely :)</div>
+    </details>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 Retrogram Music LLC &middot; <a href="terms.html">Terms</a>
+  </div>
 </div>
 
 <script>
@@ -373,13 +520,13 @@ function puppyWag() {
 setInterval(puppyWag, 10000);
 
 function copyCommand() {
-  navigator.clipboard.writeText('bunx skills add mattd3080/domain-shark').then(() => {
+  navigator.clipboard.writeText('curl -sL domainpuppy.com/install | sh').then(() => {
     const btn = document.getElementById('copyBtn');
     btn.textContent = 'Copied!';
     btn.classList.add('copied');
     puppyWag();
     setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
-  });
+  }).catch(() => {});
 }
 </script>
 </body>
