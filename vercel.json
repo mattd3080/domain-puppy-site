@@ -1,6 +1,7 @@
 {
   "rewrites": [
-    { "source": "/install", "destination": "/install.sh" }
+    { "source": "/install", "destination": "/install.sh" },
+    { "source": "/api/version", "destination": "https://domain-puppy-proxy.mattjdalley.workers.dev/v1/version" }
   ],
   "headers": [
     {
